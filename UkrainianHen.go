@@ -1,4 +1,4 @@
-package UkrainianHen
+package main
 
 type UkrainianHen struct {
   eggs int

@@ -1,9 +1,6 @@
-package Get_Hen
+package main
 
-import "./BelarusianHen"
-import "./MoldovanHen"
-import "./UkrainianHen"
-import "./RussianHen"
+
 
 type Country struct {
   Russia string
