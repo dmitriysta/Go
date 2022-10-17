@@ -1,4 +1,4 @@
-
+package MoldovanHen
 
 type MoldovanHen struct {
   eggs int

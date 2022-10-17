@@ -1,4 +1,4 @@
-
+package RussianHen
 
 type RussianHen struct {
   eggs int

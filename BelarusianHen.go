@@ -1,4 +1,4 @@
-
+package BelarusianHen
 
 type BelarusianHen struct {
   eggs int

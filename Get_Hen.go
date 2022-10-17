@@ -1,4 +1,9 @@
+package Get_Hen
 
+import "./BelarusianHen"
+import "./MoldovanHen"
+import "./UkrainianHen"
+import "./RussianHen"
 
 type Country struct {
   Russia string
@@ -16,20 +21,20 @@ func (c *Country) getHen() {
  c.Belarusia = "Belarusia"
  var nameCountry string //здесь мы принимаем значение переменной извне
   if nameCountry == c.Russia {
-    return RussianHen()
+    return RussianHen.getDescription()
   }
 
   if nameCountry == c.Ukraine {
-    return UkrainianHen()
+    return UkrainianHen.getDescription()
   }
 
   if nameCountry == c.Moldova {
-    return MoldovanHen()
+    return MoldovanHen.getDescription()
   }
 
   if nameCountry == c.Belarusia {
-    return BelarusianHen()
+    return BelarusianHen.getDescription()
   } else {
-    return nameCountry
+    return nil
   }
 }
