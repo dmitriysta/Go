@@ -1,37 +1,27 @@
 package main
 
-
+import "fmt"
 
 type Country struct {
-  Russia string
-  Ukraine string
-  Moldova string
-  Belarusia string
+	name string
 }
 
-
-
 func (c *Country) getHen() {
- c.Russia = "Russia"
- c.Ukraine = "Ukraine"
- c.Moldova = "Moldova"
- c.Belarusia = "Belarusia"
- var nameCountry string //здесь мы принимаем значение переменной извне
-  if nameCountry == c.Russia {
-    return RussianHen.getDescription()
-  }
-
-  if nameCountry == c.Ukraine {
-    return UkrainianHen.getDescription()
-  }
-
-  if nameCountry == c.Moldova {
-    return MoldovanHen.getDescription()
-  }
-
-  if nameCountry == c.Belarusia {
-    return BelarusianHen.getDescription()
-  } else {
-    return nil
-  }
+	Russia := Country{"Russia"}
+	Ukraine := Country{"Ukraine"}
+	Moldova := Country{"Moldova"}
+	Belarusia := Country{"Belarusia"}
+	nameCountry := Country{"Принимаем значение страны извне"}
+	switch {
+	case nameCountry == Russia:
+		RussianHen.getDescription()
+	case nameCountry == Ukraine:
+		UkrainianHen.getDescription()
+	case nameCountry == Moldova:
+		MoldovanHen.getDescription()
+	case nameCountry == Belarusia:
+		BelarusianHen.getDescription()
+	default:
+		fmt.Println(nameCountry)
+	}
 }
