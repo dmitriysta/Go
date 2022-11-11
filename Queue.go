@@ -1,46 +1,53 @@
 package main
 
-import "fmt"
-
 type QueueNode struct {
 	value int
 	next  *QueueNode
 }
 
-type Queue struct {
+type MyQueue struct {
 	head *QueueNode
 	tail *QueueNode
 }
 
-func (q *Queue) back() int {
-	return q.tail.value
+func Constructor() MyQueue {
+	return MyQueue{}
 }
 
-func (q *Queue) front() int {
-	return q.head.value
-}
-
-func (q *Queue) push(value int) {
+func (q *MyQueue) Push(value int) {
 	newNode := &QueueNode{value, nil}
-	if q.head == nil {
+	if q.tail == nil {
+		q.tail, q.head = newNode, newNode
+	} else {
+		q.tail.next = newNode
 		q.tail = newNode
 	}
-	newNode.next = q.head
-	q.head = newNode
 }
 
-func (q *Queue) pop() {
-	if q.head != nil {
-		q.tail = q.tail.next
+func (q *MyQueue) Pop() int {
+	temp := q.head
+	if temp != nil {
+		q.head = q.head.next
+		if q.head == nil {
+			q.tail = nil
+		}
+		return temp.value
 	} else {
-		fmt.Println("Очередь содержит 1 элемент")
+		return 0
 	}
 }
 
-func (q *Queue) empty() bool {
+func (q *MyQueue) Peek() int {
+	if q.head != nil {
+		return q.head.value
+	}
+	return 0
+}
+
+func (q *MyQueue) Empty() bool {
 	if q.head != nil {
 		return false
-	}else{
+	} else {
 		return true
 	}
 }

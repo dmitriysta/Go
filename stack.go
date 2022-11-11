@@ -1,42 +1,35 @@
 package main
 
-import "fmt"
-
-type StackNode struct {
-	value int
-	next  *StackNode
+type MinStack struct {
+	Value []int
+	min   []int
 }
 
-type Stack struct {
-	bottom *StackNode
-	top    *StackNode
+func Constructor() MinStack {
+	return MinStack{Value: []int{}, min: []int{}}
 }
 
-func (s *Stack) add(value int) {
-	newNode := &StackNode{value, nil}
-	newNode.next = s.top
-	s.top = newNode
-}
-
-func (s *Stack) delete() {
-	if s.top != nil {
-		s.top = s.top.next
-	} else {
-		fmt.Println("Стек не содержит элементов")
-	}
-
-}
-
-func (s *Stack) searchTop() int {
-	return s.top.value
-}
-
-func (s *Stack) empty() bool {
-	if s.top != nil {
-		return false
-	}else{
-		return true
+func (this *MinStack) Push(val int) {
+	this.Value = append(this.Value, val)
+	if len(this.min) == 0 {
+		this.min = append(this.min, val)
+	} else if val <= this.min[len(this.min)-1] {
+		this.min = append(this.min, val)
 	}
 }
 
+func (this *MinStack) Pop() {
+	if this.Value[len(this.Value)-1] == this.min[len(this.min)-1] {
+		this.min = this.min[:len(this.min)-1]
+	}
 
+	this.Value = this.Value[:len(this.Value)-1]
+}
+
+func (this *MinStack) Top() int {
+	return this.Value[len(this.Value)-1]
+}
+
+func (this *MinStack) GetMin() int {
+	return this.min[len(this.min)-1]
+}
